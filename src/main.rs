@@ -40,6 +40,11 @@ async fn add_item(data: web::Data<AppState>, item: web::Json<Item>) -> impl Resp
         }
     }
 }
+// curl --location 'http://localhost:3000/add' \
+// --header 'Content-Type: application/json' \
+// --data-raw '{
+//     "name": "nileshyadav987@gmail.com"
+// }'
 
 #[post("/invoice/add")]
 async fn add_invoice(data: web::Data<AppState>, invoice: web::Json<Invoice>) -> impl Responder {
@@ -58,6 +63,13 @@ async fn add_invoice(data: web::Data<AppState>, invoice: web::Json<Invoice>) -> 
         }
     }
 }
+// curl --location 'http://localhost:3000/invoice/add' \
+// --header 'Content-Type: application/json' \
+// --data '{
+//         "invoice_id": "2",
+//         "amount": 5000,
+//         "status": "draft"
+//     }'
 
 #[put("/invoice/update/{invoice_id}")]
 async fn update_invoice(data: web::Data<AppState>, invoice_id: web::Path<String>, invoice: web::Json<Invoice>) -> impl Responder {
